@@ -53,8 +53,8 @@ endif
 EMBARC_MLI_PRE_COMPILED_URL := "https://github.com/foss-for-synopsys-dwc-arc-processors/embarc_mli/releases/download/Release_1.1/embARC_MLI_package.zip"
 EMBARC_MLI_PRE_COMPILED_MD5 := "173990c2dde4efef6a2c95b92d1f0244"
 
-ZEPHYR_URL := "http://mirror.tensorflow.org/github.com/antmicro/zephyr/archive/55e36b9.zip"
-ZEPHYR_MD5 := "755622eb4812fde918a6382b65d50c3b"
+ZEPHYR_URL := "https://github.com/zephyrproject-rtos/zephyr/archive/refs/tags/zephyr-v2.5.0.zip"
+ZEPHYR_MD5 := "f00f45d92eb687f1cb79de88b8ebb336"
 
 ETHOSU_URL := "https://git.mlplatform.org/ml/ethos-u/ethos-u-core-driver.git/snapshot/ethos-u-core-driver-547ca53bb26a705cfceb1348373dd628eada2422.tar.gz"
 ETHOSU_MD5 := "f24119b34a9a6448b608f8ccea335c8b"
