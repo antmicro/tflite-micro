@@ -246,6 +246,54 @@ the serial output in the Arduino desktop IDE, do the following:
 
 If you don't see any output, repeat the process again.
 
+## Deploy to Zephyr on LiteX/VexRiscv
+
+The following instructions will help you build and deploy this example to
+[Zephyr on LiteX/VexRiscv](https://github.com/litex-hub/zephyr-on-litex-vexriscv) design.
+
+The example has been tested on [Arty A7](https://digilent.com/reference/programmable-logic/arty-a7/start)
+equipped with a [Pmod I2S2 module](https://digilent.com/reference/pmod/pmodi2s2/start) working
+in master mode.
+
+The tests have shown that the example requires good processing speed in order to produce
+any output. Bare VexRiscv with IMAC modules might be too simple for that purpose,
+so a use of acceleration, bigger cache or multicore is encouraged.
+
+Alternatively, the example can be made to work on slower devices at the cost of output quality.
+This can be achieved by lowering the `minimum_count` parameter in `RecognizeCommands` constructor,
+or increasing the value of average_window_duration_ms at least by a factor of 1.5.
+The constructor is called in `main_functions.cc` and defined in `recognize_commands.cc`.
+
+### Install the Zephyr SDK
+
+To be able to compile the example, install Zephyr SDK, version at least 2.5.0. The instructions
+can be found [here](https://docs.zephyrproject.org/latest/getting_started/index.html).
+
+### Download the design
+
+The design for which the demo was dedicated cabe be downloaded
+on [GitHub](https://github.com/antmicro/zephyr-on-litex-vexriscv)
+
+The repository contains build instructions.
+
+### Compile the binary
+
+The following command will download the required TensorFlow Lite Micro dependencies and then compile a
+binary for the platform:
+
+```
+make -f tensorflow/lite/micro/tools/make/Makefile TARGET=zephyr_vexriscv TARGET_ARCH=vexriscv micro_speech_bin
+```
+
+Notice that sometimes at the first run the Makefile needs to be run twice.
+
+The binary will be created in the following location:
+
+```
+tensorflow/lite/micro/tools/make/gen/zephyr_vexriscv_vexriscv_default/micro_speech/build/zephyr/zephyr.bin
+```
+
+
 ## Deploy to ESP32
 
 The following instructions will help you build and deploy this example to
