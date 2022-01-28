@@ -15,7 +15,7 @@ MICRO_SPEECH_HDRS += tensorflow/lite/micro/examples/micro_speech/micro_features/
 
 ZEPHYR_MICRO_SPEECH_SRCS = \
 	tensorflow/lite/micro/examples/micro_speech/main.cc \
-	tensorflow/lite/micro/examples/micro_speech/main_functions.cc \
+	tensorflow/lite/micro/examples/micro_speech/zephyr_riscv/main_functions.cc \
 	tensorflow/lite/micro/examples/micro_speech/zephyr_riscv/audio_provider.cc \
 	tensorflow/lite/micro/examples/micro_speech/feature_provider.cc \
 	tensorflow/lite/micro/examples/micro_speech/recognize_commands.cc \

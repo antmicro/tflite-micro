@@ -148,10 +148,13 @@ TfLiteStatus GetAudioSamples(tflite::ErrorReporter* error_reporter,
     memset(g_audio_output_buffer, 0, sizeof(g_audio_output_buffer));
 
     // Initialize the i2s driver
+    printk("Initializing i2s driver... ");
     if (InitializeAudioProvider(error_reporter) != kTfLiteOk)
       return kTfLiteError;
+    printk("ok\n");
 
     // Run the audio gatherer thread
+    printk("Starting audio recording thread... ");
     thread_audio_tid = k_thread_create(&thread_audio,
       thread_audio_stack,
       K_THREAD_STACK_SIZEOF(thread_audio_stack),
@@ -159,6 +162,7 @@ TfLiteStatus GetAudioSamples(tflite::ErrorReporter* error_reporter,
       NULL, NULL, NULL,
       AUDIO_THREAD_PRIORITY,
       0, K_NO_WAIT);
+    printk("ok\n");
 
     // Lower the main thread priority to let the audio gatherer thread
     // work until it's blocked
@@ -166,10 +170,13 @@ TfLiteStatus GetAudioSamples(tflite::ErrorReporter* error_reporter,
     k_thread_priority_set(thread_main, MAIN_THREAD_PRIORITY);
 
     // Wait for the first samples to be read
+    printk("Awaiting the first audio samples... ");
     while (g_latest_audio_timestamp == 0)
       ;
+    printk("ok\n");
 
     g_is_audio_initialized = true;
+    printk("Running.\n");
   }
 
   // Convert the requested times to the corresponding values in the ring buffer
